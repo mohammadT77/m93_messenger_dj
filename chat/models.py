@@ -11,3 +11,6 @@ class Message(BaseModel):
     replay_ref = models.ForeignKey("Message", models.SET_NULL, null=True, default=None, blank=True)
     seen = models.BooleanField(default=False, null=False, blank=False)
     seen_timestamp = models.DateTimeField(default=None, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return f"Message {self.subject}: from {self.sender} to {self.receiver}"
