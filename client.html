@@ -1,0 +1,22 @@
+ <html>
+    <head>
+
+    </head>
+    <body>
+
+        <button onclick="get_index_page()">CLICK</button>
+
+
+        <script>
+            function get_index_page() {
+                fetch("http://localhost:8000").then(response => {
+                    return response.json()
+                }).then(result=>{
+                    console.log("Result: message:", result.message)
+                }).catch(err=>{
+                    console.log("Err:", err)
+                })
+            }
+        </script>
+    </body>
+ </html>
