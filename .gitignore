@@ -1,5 +1,4 @@
 /venv*
 db.sqlite3
-*migrations*
 *.pyc
 *__pycache__*
