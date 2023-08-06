@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from .serializers import ChatSerializers
 from .models import Message
 from django.db.models import Q
+from rest_framework import status
 
 
 def index_view(req):
@@ -26,5 +27,5 @@ class ChatView(APIView):
         serializers_data = ChatSerializers(data=request.POST)
         if serializers_data.is_valid():
             serializers_data.create(serializers_data.validated_data)
-            return Response(serializers_data.data)
-        return Response(serializers_data.errors)
+            return Response(serializers_data.data, status=status.HTTP_201_CREATED)
+        return Response(serializers_data.errors, status=status.HTTP_400_BAD_REQUEST)
