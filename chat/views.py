@@ -43,7 +43,8 @@ def get_chat_with_receiver(req, receiver_id):
 @api_view(http_method_names=['POST'])
 def post_new_message(req, receiver_id):
     data = req.data
-    data['receiver_id'] = receiver_id
+    data['receiver'] = receiver_id
+    data['sender'] = req.user.id
     message_serializer = MessageSerializer(data=req.data)
     if message_serializer.is_valid():
         new_message = message_serializer.save()
